@@ -31,4 +31,34 @@
 
   Expected Time Complexity : O(N)
   Expected Auxilliary Space : O(1)
+
+
+  LinkedList1: 1->2->3->4->5->6
+  LinkedList2: 99->59->42->20
+
+  LinkedList1: 1->2->3->4->5->6
+  LinkedList2: 1->2->3->4->5
  */
+
+function IdenticalLinkedLists(LinkedList1,LinkedList2) {
+  let currentNode01 = LinkedList1;
+  let currentNode02 = LinkedList2;
+  let isEqual;
+
+  while (currentNode01 !== null || currentNode02 !== null) {
+    if (currentNode01.value !== currentNode02.value) {
+      isEqual = false;
+      return isEqual;
+    }
+
+    if ((currentNode01 === null && currentNode02 !== null) || (currentNode02 === null && currentNode01 !== null)) {
+      isEqual = false;
+      return isEqual;
+    }
+    isEqual = true;
+    currentNode01 = currentNode01.next;
+    currentNode02 = currentNode02.next;
+  }
+
+  return isEqual;
+}

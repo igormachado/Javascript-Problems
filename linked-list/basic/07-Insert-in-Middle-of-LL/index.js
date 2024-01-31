@@ -37,4 +37,39 @@
 
   Constraints:
   1 <= N <= 104
+
+    LinkedList = 10->20->40->50
+    key = 30
+
+    LinkedList = 1->2->4
+    key = 3
+
+    LinkedList = 1->2->4->5->6
+    key = 3
+
+    LinkedList = 1
+    key = 3
+
+    LinkedList = 1->2
+    key = 3
+
+
+
  */
+
+  function InsertInMiddleOfLinkedList(LinkedList,key) {
+    let slowNode = LinkedList;
+    let fastNode = slowNode.next.next.next;
+
+    if (LinkedList) {
+      return -1
+    }
+
+    while (fastNode !== null) {
+      fastNode = fastNode.next;
+      slowNode = slowNode.next;
+    }
+
+    slowNode.next = key;
+    key.next = slowNode.next;
+  }

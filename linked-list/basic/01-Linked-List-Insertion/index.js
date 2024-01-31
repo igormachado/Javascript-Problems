@@ -63,38 +63,41 @@
     Output: 5 2 9 5 6
  */
 
-let beginningNode = null;
-let endNode = null;
-let currentNode = head;
-let nextNode = currentNode.next;
+function LinkedListInsertion(LinkedList) {
+  let beginningNode = null;
+  let endNode = null;
+  let currentNode = LinkedList;
+  let nextNode = currentNode.next;
 
-while (nextNode !== null && nextNode.value !== 0 || nextNode.value !== 1) {
-  nextNode = nextNode.next;
-
-  if (nextNode.value === 0) {
+  while (nextNode !== null && nextNode.value !== 0 || nextNode.value !== 1) {
     nextNode = nextNode.next;
 
-    if(beginningNode === null) {
+    if (nextNode.value === 0) {
+      nextNode = nextNode.next;
+
+      if(beginningNode === null) {
+        beginningNode = currentNode;
+        currentNode = nextNode;
+      }
+
+      currentNode.next = beginningNode;
       beginningNode = currentNode;
       currentNode = nextNode;
-    }
+    } 
 
-    currentNode.next = beginningNode;
-    beginningNode = currentNode;
-    currentNode = nextNode;
-  } 
+    if (nextNode.value === 1) {
+      nextNode = nextNode.next;
 
-  if (nextNode.value === 1) {
-    nextNode = nextNode.next;
+      if (endNode === null) {
+        endNode = currentNode;
+        beginningNode.next = endNode;
+        currentNode = nextNode;
+      }
 
-    if (endNode === null) {
+      endNode.next = currentNode;
       endNode = currentNode;
-      beginningNode.next = endNode;
       currentNode = nextNode;
     }
-
-    endNode.next = currentNode;
-    endNode = currentNode;
-    currentNode = nextNode;
   }
+  return currentNode;
 }

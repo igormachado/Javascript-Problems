@@ -40,4 +40,16 @@
     1 <= value <= 103
  */
 
+
+  function CountNodeOfLinkedList(LinkedList) {
+    let currentNode = head;
+    let countNode = 0;
+
+    while (currentNode !== null) {
+      countNode = countNode + 1;
+      currentNode = currentNode.next;
+    }
+
+    return countNode;
   
+  }
